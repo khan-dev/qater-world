@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>PoC 'Qatar Public Procecuation'</title>
+    <meta name="og:title" content="IBM Watson Language Translator">
+    <meta name="og:description" content="The IBM Watson Language Translator service converts text input in one language into a destination language for the end user using background from domain-specific models. Translation is available among Arabic, Catalan, Chinese (Simplified and Traditional), Czech, Danish, Dutch, English, Finnish, French, German, Hindi, Hungarian, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Russian, Spanish, Swedish and Turkish (some languages may not be available for all domains).">
+    <link href="css/watson-bootstrap-style.css" rel="stylesheet">
+    <link href="css/browser-compatibility.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<style>
+
+
+    #mic:hover {
+      box-shadow: 0 7px 8px 0 rgba(0,0,0,0.3);
+      transition: 0.3s;
+      cursor: pointer;
+      border-radius: 50%;
+
+    }
+    #stop:hover {
+      box-shadow: 0 7px 8px 0 rgba(0,0,0,0.3);
+      transition: 0.3s;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    #speak:hover {
+      box-shadow: 0 7px 8px 0 rgba(0,0,0,0.3);
+      transition: 0.3s;
+      cursor: pointer;
+      border-radius: 50%;
+
+    }
+
+  
+   
+    </style>
+<body>     
+        <section>
+       <!--  <button id="mic">Open_Mic</button> -->
+      <!--      <button id="stop">Stop</button> -->
+     <!--      <button id="speak">Speak</button>  -->     
+        </section>
+        
+   
+<p id="demo"></p>
+
+<% if (!hideHeader) { %>
+    <!-- top nav section -->
+    <div class="navbar-wrapper">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- IBM Watson Logo -->
+                <div class="navbar-header">
+                    <a class="navbar-brand no-underline" href="https://www.ibm.com/watson/developer/"><span class="thin-branding">IBM</span> Watson APIs</a>
+                </div>
+                <!-- .navbar right-->
+            </div>
+            <!-- .container -->
+        </div>
+        <!-- .navbar -->
+    </div>
+    <!-- .navbar-wrapper -->
+    <!-- Service Description Bar -->
+    <div class="header">
+        <div class="container">
+            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+                <img src="images/language-translator.svg" class="service-icon">
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-12">
+                <h2>Qatar Public Procecuation</h2>
+                <p>"Watson Speech to Text" -> "Translation" -> "Text to Speech"</p>
+                <p id="token"></p>
+
+            </div>
+            <!-- .col-lg-10 -->
+        </div>
+        <!-- .container -->
+    </div>
+<% } %>
+    <!-- .header -->
+    <!-- Step 2 Section-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" style="display:none">
+                <h2>Choose a Domain</h2>
+            </div>
+            <!-- .col-lg-12 -->
+            <div class="col-lg-8 col-md-12 col-sm-12" style="display:none">
+                <p class="help-block">Just like a doctor is skilled in medical terms, domain-specific models have been trained in terminology from various fields. They help to provide higher quality translations when used in the right context.</p>
+                <div class="form-group" style="margin-bottom: 1em;">
+                    <input type="radio" name="group1" value="conversational">Conversational
+                    <input type="radio" name="group1" value="general" checked="checked">News
+                    <input type="radio" name="group1" value="patent">Patent
+                </div>
+                <!-- .form-group -->
+            </div>
+            <!-- .col-lg-8 -->
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div>
+       
+          <div>This system is for demonstration purposes only and is not intended to process Personal Data. No Personal Data is to be entered into this system as it may not have the necessary controls in place to meet the requirements of the General Data Protection Regulation (EU) 2016/679</div></h6>
+          <div>
+            <h6>
+              By using this application, you agree to the&nbsp;
+              <a target="_blank" rel="noreferrer noopener" href="https://watson-developer-cloud.github.io/terms?name=Language%20Translator%20Demo">
+                    Terms of Use
+              </a>
+            </h6>
+          </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- Two columns of inputs -->
+        <!-- First column of inputs -->
+        <div class="row">
+            <!-- .col-lg-12 -->
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <h3>Input</h3>
+                <p class="help-block">Speak through microphone</p>
+
+ <p id="get_translation" style="display: none;">Hi</p>
+ <p id="mic_input"  style="display: none;">mic_input</p>
+
+
+ <button class="btn-default btn "  aria-expanded="true" style="padding:15px;" >
+    <select id="lang_input" class=" btn-default" style="border-color: transparent transparent #fff transparent;">
+        <option value="">Choose Language</option>
+        <option value="english">English</option>
+        <option value="arabic">Arabic</option>
+        </select>
+ </button>
+             <div class="form-group row" >
+                    <div class="col-lg-12">
+                        <div class="dropdown" style="display: none;">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuInput" data-toggle="dropdown" aria-expanded="true">
+                                Choose Language
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="ulSourceLang">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- .col-lg-6 -->
+                <!-- Tab panes -->
+                <div class="well">
+                    <form class="form-horizontal">
+                        <div role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                           <!--  <button id="mic" type="button">Add Button here</button>  -->
+                             <i style='font-size:40px' class='fas' id="mic">&#xf130;</i>
+                            
+                             <i style='font-size:40px; margin-left:20%; color:red' class='far' id="stop">&#xf28d;</i>
+                             <p id="status"></p> 
+
+                            </ul>
+                            <div class="hr-tab"></div>
+                            <fieldset>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="home">
+                                                <textarea></textarea>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="profile">
+                                                <textarea disabled="disabled">Example of Rest API</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- .col-lg-12 -->
+                                </div>
+                                <!-- .form -->
+                            </fieldset>
+                    </form>
+                    </div>
+                    <!-- /.well -->
+                </div>
+                <!-- /.tabpanel -->
+                <div class="form-group row">
+                </div>
+                <!-- /.form -->
+                <div id="resetSpan">
+                    <img src="images/reset.svg" class="icon"><a href="/">Reset</a>
+                </div>
+            </div>
+            <!-- /.row -->
+            <!-- Second column of inputs -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h3>Output</h3>
+                    <p class="help-block" style="color:red">*CLOSE THE MIC BEFORE LISTENING TO AUDIO*</p>
+
+                    <div class="row" >
+                        <div class="col-lg-12">
+                          
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button"  id="dropdownMenuOutput" data-toggle="dropdown" aria-expanded="true">
+                                    Choose Language
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="ulTargetLang">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab panes -->
+                    <div class="well">
+                        <form class="form-horizontal">
+                            <div role="tabpanel">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                        <i style='font-size:35px' class='far' id="speak">&#xf1c7;</i>
+                                        <p id="status2"></p> 
+
+                                </ul>
+                                <div class="hr-tab"></div>
+                                <fieldset>
+                                    <div class="form-group row">
+                                        <div class="col-lg-12">
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane active" id="home2">
+                                                    <textarea></textarea>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="profile2">
+                                                    <textarea disabled="disabled">Example of JSON</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- .col-lg-12 -->
+                                    </div>
+                                    <!-- .form -->
+                                </fieldset>
+                        </form>
+                        </div>
+                        <!-- /.well -->
+                    </div>
+                    <!-- /.tabpanel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+        <!-- Place js files at the end of the document -->
+        <script type="text/javascript" src="watson-speech.js"></script>
+        <!-- window.fetch pollyfill for IE/Edge & Older Chrome/FireFox -->
+        <script src="fetch.umd.js"></script>
+        <script src="js/css_browser_selector.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="demo.js"></script> 
+
+  <pre><code><script style="display: none;">
+
+        //TRANSLATOR _FUNCTION   
+       function getTranslation() {
+        var translation= $('#get_translation').text();
+
+       var nmtValue  = '2018-05-01';
+       var pageDomain = '';
+       var source = '';
+       var target = '';
+       var textContent = '';
+       if ((parseInt($('#home textarea').val().length) > 0)) {
+         textContent = $('#home textarea').val();
+       }
+   
+       // get model_id from source to target
+      // var model_id = 'ar-en';
+       if (textContent && translation) {
+         //console.log('source-' + source + '  target-' + target + '   textContent-' + textContent);
+   
+         // Create call for AJAX and to populate REST API tab
+         var callData = {
+           model_id: translation.toString(),
+           text: textContent
+         };
+         var restAPICall = {
+           type: 'POST',
+           url: '/api/translate',
+           data: callData,
+           dataType: 'json',
+           headers: {
+             'X-WDC-PL-OPT-OUT': $('input:radio[name=serRadio]:radio:checked').val(),
+             'X-Watson-Technology-Preview': nmtValue
+           },
+           async: true
+         };
+   
+         $('#profile textarea').val(JSON.stringify(callData, null, 2));
+         $('#home2 textarea').val('translating...');
+   
+         $.ajax(restAPICall)
+           .done(function (data) {
+             $('#home2 textarea').val(data['translations'][0]['translation']);
+             $('#profile2 textarea').val(JSON.stringify(data, null, 2));
+           })
+           .fail(function (jqXHR, statustext, errorthrown) {
+             $('#home2 textarea').val('translation error');
+             console.log(statustext + errorthrown);
+           });
+       } else {
+         console.log('not all values' + 'source- ' + source + '  target- ' + target + '   textContent- ' + textContent + ' model_id - ' + translation);
+       }
+     } // get Translation end here
+     $('#input').change(function(){
+       alert('The text has been changed.');
+     });
+   
+
+     var translation="";
+
+
+     $('#lang_input').change(function () {
+    var val = this.value; //grab the value selected
+    if(val=="arabic"){
+    // alert("work");
+    //  document.getElementById('home').style.display = "block";
+    $('#get_translation').text("ar-en");
+    $('#mic_input').text("ar-AR_BroadbandModel");
+     
+    }
+    else{
+    $('#get_translation').text("en-ar");
+    $('#mic_input').text("en-US_BroadbandModel");
+    }
+})
+     //=========================SPEAK_TO_TEXT=======================================
+     
+     document.getElementById("mic").addEventListener("click", function(event){
+
+     var mic_input= $('#mic_input').text();
+
+    $("#mic").css("color", "blue");
+    $("#status").text("please wait...").css('color','blue');;
+
+       event.preventDefault()
+       var token ='eyJraWQiOiIyMDE5MDcyNCIsImFsZyI6IlJTMjU2In0.eyJpYW1faWQiOiJpYW0tU2VydmljZUlkLTRkYmY0MDk1LWY3YTMtNGE3OC1hNWE4LTEzZDQxNmViMDcyNyIsImlkIjoiaWFtLVNlcnZpY2VJZC00ZGJmNDA5NS1mN2EzLTRhNzgtYTVhOC0xM2Q0MTZlYjA3MjciLCJyZWFsbWlkIjoiaWFtIiwiaWRlbnRpZmllciI6IlNlcnZpY2VJZC00ZGJmNDA5NS1mN2EzLTRhNzgtYTVhOC0xM2Q0MTZlYjA3MjciLCJzdWIiOiJTZXJ2aWNlSWQtNGRiZjQwOTUtZjdhMy00YTc4LWE1YTgtMTNkNDE2ZWIwNzI3Iiwic3ViX3R5cGUiOiJTZXJ2aWNlSWQiLCJ1bmlxdWVfaW5zdGFuY2VfY3JucyI6WyJjcm46djE6Ymx1ZW1peDpwdWJsaWM6c3BlZWNoLXRvLXRleHQ6ZXUtZGU6YS82NjZkNzdkMTIyZGM0ZDc3YTFmMGQwZjg0YjUzY2UzMDplMzFjOTMyMi0xZmFhLTRjNDYtYmZmOS01YzFiMzY5MGNmMmU6OiJdLCJhY2NvdW50Ijp7InZhbGlkIjp0cnVlLCJic3MiOiI2NjZkNzdkMTIyZGM0ZDc3YTFmMGQwZjg0YjUzY2UzMCJ9LCJpYXQiOjE1NzE2MDkzNjIsImV4cCI6MTU3MTYxMjk2MiwiaXNzIjoiaHR0cHM6Ly9pYW0uY2xvdWQuaWJtLmNvbS9pZGVudGl0eSIsImdyYW50X3R5cGUiOiJ1cm46aWJtOnBhcmFtczpvYXV0aDpncmFudC10eXBlOmFwaWtleSIsInNjb3BlIjoiaWJtIG9wZW5pZCIsImNsaWVudF9pZCI6ImRlZmF1bHQiLCJhY3IiOjEsImFtciI6WyJwd2QiXX0.bH3v0w3W7z_G8gzbD1GF3vVfeKc8b-iwGgZohClQdBNA_BjPI0CHFdRnZw9-5kqdgZzKG9eNLOrDBbYqmitUoXSupV0GL_Sw7RokB3OG0116CCf6Kq9LX9tAEfcFh5LiVUQUH22cyLGsXtsPBJwwcpfz1HqenAQZrKc9dctnTtezpaeHw_wNR7u8vvnKbzY782w3_xE5yzS1FVSSSIr2GsWJUyyUKHstUQCw3G5kEcoU0s7luTGm-tgGA-LZJetojN-AiIXvy8dExZZV78adGcOOyzdXTWupTaPX3yuUiohS4ssz5ZwfLEQMmPihF6RTnNYXu2ILFUygyR0kCfUWYA';
+       var stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
+       url:"https://stream-fra.watsonplatform.net/speech-to-text/api/v1/recognize",
+       access_token: token,
+       model:mic_input.toString(),
+       word_confidence: true,
+       outputElement: '#home textarea', // send text to browser instead of console
+       object_mode: true
+     });
+   stream.recognizeStream.on('message', function(frame, data) {
+    $("#status").text("recording...").css('color','blue');;
+     console.log('message', frame, data)
+     getTranslation()
+   });
+     stream.on('data', function(data) { // send text to console instead of browser
+       console.log(data);
+     });
+   
+     stream.on('error', function(err) {
+       console.log(err);
+     });
+   
+     document.querySelector('#stop').onclick = function() {
+      //   alert("stop");
+       stream.stop();
+       $("#status").text("recording stopped").css('color','red');
+
+     };
+     });
+   
+   
+    //===============================================MY_TEXT_TO_SPEECH_CODE==================================================================
+   document.querySelector('#speak').onclick = function() {
+      // alert("Hi");
+      $("#speak").css("color", "blue");
+       $("#status2").text("Speaking..").css('color','blue');
+        var token ='eyJraWQiOiIyMDE5MDcyNCIsImFsZyI6IlJTMjU2In0.eyJpYW1faWQiOiJpYW0tU2VydmljZUlkLWFiODI0NGJiLWRjOTMtNDliNi1hMWQyLTJkMzE5YWIzODk2NCIsImlkIjoiaWFtLVNlcnZpY2VJZC1hYjgyNDRiYi1kYzkzLTQ5YjYtYTFkMi0yZDMxOWFiMzg5NjQiLCJyZWFsbWlkIjoiaWFtIiwiaWRlbnRpZmllciI6IlNlcnZpY2VJZC1hYjgyNDRiYi1kYzkzLTQ5YjYtYTFkMi0yZDMxOWFiMzg5NjQiLCJzdWIiOiJTZXJ2aWNlSWQtYWI4MjQ0YmItZGM5My00OWI2LWExZDItMmQzMTlhYjM4OTY0Iiwic3ViX3R5cGUiOiJTZXJ2aWNlSWQiLCJ1bmlxdWVfaW5zdGFuY2VfY3JucyI6WyJjcm46djE6Ymx1ZW1peDpwdWJsaWM6dGV4dC10by1zcGVlY2g6ZXUtZGU6YS82NjZkNzdkMTIyZGM0ZDc3YTFmMGQwZjg0YjUzY2UzMDplYzhiY2ExMS02ZTJhLTRjY2ItOGEyZS1kYjdmOWEwMTc4M2Q6OiJdLCJhY2NvdW50Ijp7InZhbGlkIjp0cnVlLCJic3MiOiI2NjZkNzdkMTIyZGM0ZDc3YTFmMGQwZjg0YjUzY2UzMCJ9LCJpYXQiOjE1NzE2MDAwOTgsImV4cCI6MTU3MTYwMzY5OCwiaXNzIjoiaHR0cHM6Ly9pYW0uY2xvdWQuaWJtLmNvbS9pZGVudGl0eSIsImdyYW50X3R5cGUiOiJ1cm46aWJtOnBhcmFtczpvYXV0aDpncmFudC10eXBlOmFwaWtleSIsInNjb3BlIjoiaWJtIG9wZW5pZCIsImNsaWVudF9pZCI6ImRlZmF1bHQiLCJhY3IiOjEsImFtciI6WyJwd2QiXX0.CvgYYIEIHKlb7eujO2QMW1pMLB2Ji_nykAhcVTAMTFCRa6zgnzyCqjz2aDgeAEglubU_aJCjkXEB51H8aCibntXcBHOczm8vHkTtoybj484_6rE49Xn2KjL6HUStBTFqcdP1YS7EsMEGgVll_oVzvRWzkWu38HsKJh-Rg3erPXdyb618nW571YEze9Prddl3FBY9vSbkrz8PpuDr3wSNy5zdFMZJaPJrRpMKaklsvhqVPp7YlobXkoQt9eSs6qr4gJObAWUgvp9eQkdHoZ8Wzw4JIXyaPWs8zLI912CLQZLDv20-Kc8ZKFYuXyI8O84a0cAyopM4KllKAubKlj06EQ';
+        const audio = WatsonSpeech.TextToSpeech.synthesize( {
+           url:" https://stream-fra.watsonplatform.net/text-to-speech/api",
+           access_token: token,
+           text: document.querySelector('#home2 textarea').value,
+         });
+         audio.onerror = function(err) {
+           console.log('audio error: ', err);
+   };
+   };
+  /* document.getElementById("check").addEventListener("click", function(event){
+   
+       alert("hi");
+   });*/
+   </script></code></pre>
+
+
+        <script type="text/javascript" src="https://cdn.rawgit.com/watson-developer-cloud/watson-developer-cloud.github.io/master/analytics.js" />
+  
+</body>
+</html>

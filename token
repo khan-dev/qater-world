@@ -1,0 +1,26 @@
+                                                SPEECH TO TEXT:
+
+
+
+curl -k -X POST \
+  --header "Content-Type: application/x-www-form-urlencoded" \
+  --header "Accept: application/json" \
+  --data-urlencode "grant_type=urn:ibm:params:oauth:grant-type:apikey" \
+  --data-urlencode "apikey=0_IEnQGV5N8Zklc8R8zEt42f9-PbXxc2nGY3dY22wLtb" \
+  "https://iam.cloud.ibm.com/identity/token"
+
+ "apikey":0_IEnQGV5N8Zklc8R8zEt42f9-PbXxc2nGY3dY22wLtb
+
+
+
+
+====================================================TEXT_SPEECH=========================================================================
+  "apikey": "Hweh200KYKCnXVb9yweXm8eVZnxWZxDV5lXWkxDqS081"
+
+
+curl -k -X POST \
+  --header "Content-Type: application/x-www-form-urlencoded" \
+  --header "Accept: application/json" \
+  --data-urlencode "grant_type=urn:ibm:params:oauth:grant-type:apikey" \
+  --data-urlencode "apikey=Hweh200KYKCnXVb9yweXm8eVZnxWZxDV5lXWkxDqS081" \
+  "https://iam.cloud.ibm.com/identity/token"

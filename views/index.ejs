@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/images/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/images/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/images/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/images/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/images/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/images/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/images/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/images/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/images/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/images/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon/favicon-16x16.png"
+    />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>PoC 'Qatar Public Procecuation'</title>
+    <meta name="og:title" content="IBM Watson Language Translator" />
+    <meta
+      name="og:description"
+      content="The IBM Watson Language Translator service converts text input in one language into a destination language for the end user using background from domain-specific models. Translation is available among Arabic, Catalan, Chinese (Simplified and Traditional), Czech, Danish, Dutch, English, Finnish, French, German, Hindi, Hungarian, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Russian, Spanish, Swedish and Turkish (some languages may not be available for all domains)."
+    />
+    <link href="css/watson-bootstrap-style.css" rel="stylesheet" />
+    <link href="css/browser-compatibility.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      /* #mic:hover {
+        box-shadow: 0 7px 8px 0 rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+      #stop:hover {
+        box-shadow: 0 7px 8px 0 rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+      #speak:hover {
+        box-shadow: 0 7px 8px 0 rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        cursor: pointer;
+        border-radius: 50%;
+      } */
+    </style>
+  </head>
+
+  <body>
+    <p id="demo"></p>
+
+    <% if (!hideHeader) { %>
+    <!-- top nav section -->
+    <div class="navbar-wrapper">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <!-- IBM Watson Logo -->
+          <div class="navbar-header">
+            <a
+              class="navbar-brand no-underline"
+              href="https://www.ibm.com/watson/developer/"
+              ><span class="thin-branding">IBM</span> Watson APIs</a
+            >
+          </div>
+          <!-- .navbar right-->
+        </div>
+        <!-- .container -->
+      </div>
+      <!-- .navbar -->
+    </div>
+    <!-- .navbar-wrapper -->
+    <!-- Service Description Bar -->
+    <div class="header">
+      <div class="container">
+        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+          <img src="images/language-translator.svg" class="service-icon" />
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-12">
+          <br/>
+          <h3>"Watson Speech to Text" -> "Translation" -> "Text to Speech"</h3>
+          <p id="token"></p>
+        </div>
+        <!-- .col-lg-10 -->
+      </div>
+      <!-- .container -->
+    </div>
+    <% } %>
+    <!-- .header -->
+    <!-- Step 2 Section-->
+    <div class="container">
+      <!-- Two columns of inputs -->
+      <!-- First column of inputs -->
+      <div class="row">
+        <!-- .col-lg-12 -->
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <h3>English</h3>
+          <p class="help-block">Speak through microphone</p>
+
+          <!-- <button class="btn-default btn "  aria-expanded="true" style="padding:15px;" >
+    <select id="lang_input" class=" btn-default" style="border-color: transparent transparent #fff transparent;">
+        <option value="">Choose Language</option>
+        <option value="english">English</option>
+        <option value="arabic">Arabic</option>
+        </select>
+ </button> -->
+          <!-- <div class="form-group row" >
+                    <div class="col-lg-12">
+                        <div class="dropdown" style="display: none;">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuInput" data-toggle="dropdown" aria-expanded="true">
+                                Choose Language
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="ulSourceLang">
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+          <!-- .col-lg-6 -->
+          <!-- Tab panes -->
+          <div class="well">
+            <form class="form-horizontal">
+              <div role="tabpanel">
+                <!-- Nav tabs -->
+
+                <!-- <div class="hr-tab"></div> -->
+                <fieldset>
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                          <textarea id="Textbox"></textarea>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                          <textarea disabled="disabled">
+Example of Rest API</textarea>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <!-- .col-lg-12 -->
+                  </div>
+                  <!-- .form -->
+                </fieldset>
+              </div>
+            </form>
+            <!-- /.well -->
+          </div>
+          <!-- /.tabpanel -->
+          <div class="form-group row">
+            <input
+              type="text"
+              name=""
+              class="form-control"
+              id="senderMSG"
+              style="width:100%"
+              onkeypress="return runOnEnter(event)"
+            />
+            <button
+              class="btn-primary"
+              style="width:25%"
+              onclick="sendTextToTranslate();"
+            >
+              send
+            </button>
+            <button
+              class="btn-primary"
+              style="width:30%"
+              onclick="SpeakEnglishToText()"
+              id="talkingEnglish"
+            >
+              Speak English
+            </button>
+            <button
+              class="btn-primary"
+              style="width:30%"
+              id="stop"
+            >
+              Stop Speaking
+            </button>
+            <button  class="btn-primary" id="speak" style="width:30%;margin-top: 5px;">Read English</button>
+            <!-- <ul class="nav nav-tabs" role="tablist"> -->
+            <!--  <button id="mic" type="button">Add Button here</button>  -->
+            <!-- <i style='font-size:40px' class='fas' id="mic">&#xf130;</i> -->
+
+            <!-- <i style='font-size:40px; margin-left:20%; color:red' class='far' id="stop">&#xf28d;</i>
+                                  <p id="status"></p>  -->
+
+            <!-- </ul> -->
+          </div>
+          <!-- /.form -->
+          <div id="resetSpan">
+            <img src="images/reset.svg" class="icon" /><a href="/">Reset</a>
+          </div>
+        </div>
+        <!-- /.row -->
+        <!-- Second column of inputs -->
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <h3>Arabic</h3>
+            <p class="help-block" style="color:red">
+              *CLOSE THE MIC BEFORE LISTENING TO AUDIO*
+            </p>
+
+            <!-- <div class="row" >
+                        <div class="col-lg-12"> -->
+
+            <!-- <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button"  id="dropdownMenuOutput" data-toggle="dropdown" aria-expanded="true">
+                                    Choose Language
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="ulTargetLang">
+
+                                </ul>
+                            </div> -->
+            <!-- </div>
+                    </div> -->
+            <!-- Tab panes -->
+            <div class="well">
+              <form class="form-horizontal">
+                <div role="tabpanel">
+                  <!-- Nav tabs -->
+                  <!-- <ul class="nav nav-tabs" role="tablist">
+                    <i style="font-size:35px" class="far" id="speak"
+                      >&#xf1c7;</i
+                    >
+                    <p id="status2"></p>
+                  </ul> -->
+                  <!-- <div class="hr-tab"></div> -->
+                  <fieldset>
+                    <div class="form-group row">
+                      <div class="col-lg-12">
+                        <div class="tab-content">
+                          <div
+                            role="tabpanel"
+                            class="tab-pane active"
+                            id="home2"
+                          >
+                            <textarea id="Textboxsecond" readonly style="text-align: right"> </textarea>
+                          </div>
+                         
+                        </div>
+                      </div>
+                      <!-- .col-lg-12 -->
+                    </div>
+                    <!-- .form -->
+                  </fieldset>
+                </div>
+              </form>
+              <!-- /.well -->
+            </div>
+            <!-- /.tabpanel -->
+            <div class="form-group row">
+              <input
+                type="text"
+                name=""
+                class="form-control"
+                id="RecieveMSG"
+                style="width:100%"
+                onkeypress="return runOnEnterArabic(event)"
+              />
+              <button
+                class="btn-primary"
+                style="width:25%"
+                onclick="sendTextToTranslateArabic();"
+              >
+                send
+              </button>
+              <button
+              id="talkingarabic"
+              class="btn-primary"
+              style="width:30%"
+              onclick="SpeakArabicToText()"
+            >
+              Speak Arabic
+            </button>
+            <button
+              class="btn-primary"
+              style="width:30%"
+              id="stoparabic"
+            >
+              Stop Speaking
+            </button>
+            </div>
+          </div>
+          <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+      </div>
+    </div>
+    <!-- /.container -->
+    <!-- Place js files at the end of the document -->
+    <script type="text/javascript" src="watson-speech.js"></script>
+    <!-- window.fetch pollyfill for IE/Edge & Older Chrome/FireFox -->
+    <script src="fetch.umd.js"></script>
+    <script src="js/css_browser_selector.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+    ></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="demo.js"></script>
+
+    <pre><code><script>
+      function runOnEnter(e){
+       
+          if(  e.which == 13 || e.keyCode == 13){
+            sendTextToTranslate();
+            return false;
+          }
+      }
+      function runOnEnterArabic(e){
+       
+       if(  e.which == 13 || e.keyCode == 13){
+        sendTextToTranslateArabic();
+         return false;
+       }
+   }
+ function sendTextToTranslate(){
+        console.log('runn')
+        let text=document.getElementById('senderMSG').value;
+        document.getElementById('Textbox').value+="\n"+text;
+        getTranslationViaButton(text) ;
+        document.getElementById('senderMSG').value="";
+    }
+    function sendTextToTranslateArabic(){
+        console.log('runn2')
+        let text=document.getElementById('RecieveMSG').value;
+        document.getElementById('Textboxsecond').value+="\n"+text;
+        getTranslationViaButtonArabic(text) ;
+        document.getElementById('RecieveMSG').value="";
+    }
+    function getTranslationViaButtonArabic(Value) {
+    //     $('#get_translation').text("ar-en");
+    // $('#mic_input').text("ar-AR_BroadbandModel");
+       var translation= "ar-en";
+       var nmtValue  = '2018-05-01';
+       var pageDomain = '';
+       var source = '';
+       var target = '';
+       var textContent = '';
+       if ((Value)) {
+         textContent = Value;
+       }
+   
+       // get model_id from source to target
+      // var model_id = 'ar-en';
+       if (textContent && translation) {
+         //console.log('source-' + source + '  target-' + target + '   textContent-' + textContent);
+   
+         // Create call for AJAX and to populate REST API tab
+         var callData = {
+           model_id: translation.toString(),
+           text: textContent
+         };
+         var restAPICall = {
+           type: 'POST',
+           url: '/api/translate',
+           data: callData,
+           dataType: 'json',
+           headers: {
+             'X-WDC-PL-OPT-OUT': $('input:radio[name=serRadio]:radio:checked').val(),
+             'X-Watson-Technology-Preview': nmtValue
+           },
+           async: true
+         };
+   
+         $('#profile textarea').val(JSON.stringify(callData, null, 2));
+         let translatetext=$('#home textarea').val();
+        //  $('#home2 textarea').val('translating...');
+   
+         $.ajax(restAPICall)
+           .done(function (data) {
+             $('#home textarea').val(translatetext+"\n"+data['translations'][0]['translation']);
+             $('#profile2 textarea').val(translatetext+"\n"+JSON.stringify(data, null, 2));
+           })
+           .fail(function (jqXHR, statustext, errorthrown) {
+             $('#home textarea').val('translation error');
+             console.log(statustext + errorthrown);
+           });
+       } else {
+         console.log('not all values' + 'source- ' + source + '  target- ' + target + '   textContent- ' + textContent + ' model_id - ' + translation);
+       }
+     }
+
+    function getTranslationViaButton(Value) {
+       var translation= "en-ar";
+       var nmtValue  = '2018-05-01';
+       var pageDomain = '';
+       var source = '';
+       var target = '';
+       var textContent = '';
+       if ((Value)) {
+         textContent = Value;
+       }
+   
+       // get model_id from source to target
+      // var model_id = 'ar-en';
+       if (textContent && translation) {
+         //console.log('source-' + source + '  target-' + target + '   textContent-' + textContent);
+   
+         // Create call for AJAX and to populate REST API tab
+         var callData = {
+           model_id: translation.toString(),
+           text: textContent
+         };
+         var restAPICall = {
+           type: 'POST',
+           url: '/api/translate',
+           data: callData,
+           dataType: 'json',
+           headers: {
+             'X-WDC-PL-OPT-OUT': $('input:radio[name=serRadio]:radio:checked').val(),
+             'X-Watson-Technology-Preview': nmtValue
+           },
+           async: true
+         };
+   
+         $('#profile textarea').val(JSON.stringify(callData, null, 2));
+         let translatetext=$('#home2 textarea').val();
+        //  $('#home2 textarea').val('translating...');
+   
+         $.ajax(restAPICall)
+           .done(function (data) {
+             $('#home2 textarea').val(translatetext+"\n"+data['translations'][0]['translation']);
+             $('#profile2 textarea').val(translatetext+"\n"+JSON.stringify(data, null, 2));
+           })
+           .fail(function (jqXHR, statustext, errorthrown) {
+             $('#home2 textarea').val('translation error');
+             console.log(statustext + errorthrown);
+           });
+       } else {
+         console.log('not all values' + 'source- ' + source + '  target- ' + target + '   textContent- ' + textContent + ' model_id - ' + translation);
+       }
+     }
+        //TRANSLATOR _FUNCTION   
+       function getTranslation() {
+       var translation= $('#get_translation').text();
+       var nmtValue  = '2018-05-01';
+       var pageDomain = '';
+       var source = '';
+       var target = '';
+       var textContent = '';
+       if ((parseInt($('#home textarea').val().length) > 0)) {
+         textContent = $('#home textarea').val();
+       }
+   
+       // get model_id from source to target
+      // var model_id = 'ar-en';
+       if (textContent && translation) {
+         //console.log('source-' + source + '  target-' + target + '   textContent-' + textContent);
+   
+         // Create call for AJAX and to populate REST API tab
+         var callData = {
+           model_id: translation.toString(),
+           text: textContent
+         };
+         var restAPICall = {
+           type: 'POST',
+           url: '/api/translate',
+           data: callData,
+           dataType: 'json',
+           headers: {
+             'X-WDC-PL-OPT-OUT': $('input:radio[name=serRadio]:radio:checked').val(),
+             'X-Watson-Technology-Preview': nmtValue
+           },
+           async: true
+         };
+   
+         $('#profile textarea').val(JSON.stringify(callData, null, 2));
+         $('#home2 textarea').val('translating...');
+   
+         $.ajax(restAPICall)
+           .done(function (data) {
+             $('#home2 textarea').val(data['translations'][0]['translation']);
+             $('#profile2 textarea').val(JSON.stringify(data, null, 2));
+           })
+           .fail(function (jqXHR, statustext, errorthrown) {
+             $('#home2 textarea').val('translation error');
+             console.log(statustext + errorthrown);
+           });
+       } else {
+         console.log('not all values' + 'source- ' + source + '  target- ' + target + '   textContent- ' + textContent + ' model_id - ' + translation);
+       }
+     } // get Translation end here
+     $('#input').change(function(){
+       alert('The text has been changed.');
+     });
+   
+
+     var translation="";
+
+
+     $('#lang_input').change(function () {
+    var val = this.value; //grab the value selected
+    if(val=="arabic"){
+    // alert("work");
+    //  document.getElementById('home').style.display = "block";
+    $('#get_translation').text("ar-en");
+    $('#mic_input').text("ar-AR_BroadbandModel");
+     
+    }
+    else{
+    $('#get_translation').text("en-ar");
+    $('#mic_input').text("en-US_BroadbandModel");
+    }
+})
+     //=========================SPEAK_TO_TEXT=======================================
+     
+//      document.getElementById("mic").addEventListener("click", function(event){
+        
+//      var mic_input= $('#mic_input').text();
+//      fetch('/api/speech-to-text/token')
+//     .then(function(response) {
+//       return response.json();
+//     })
+//     .then(function(token) {
+//       console.log(token," \n "+ token.accessToken)
+//       var stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
+//        url:"https://stream-fra.watsonplatform.net/speech-to-text/api/v1/recognize",
+//        access_token: token.accessToken,
+//        model:mic_input.toString(),
+//        word_confidence: true,
+//       outputElement: '#home textarea', // send text to browser instead of console
+//        object_mode: true
+//      });
+//    stream.recognizeStream.on('message', function(frame, data) {
+//     $("#status").text("recording...").css('color','blue');;
+//      console.log('message', frame, data)
+//      getTranslation()
+//    });
+//       document.querySelector('#stop').onclick = function() {
+//         stream.stop();
+//        $("#status").text("recording stopped").css('color','red');
+//       };
+//     })
+//     .catch(function(error) {
+//       console.log(error);
+//     });
+// });
+
+function SpeakEnglishToText(){
+
+    var mic_input= "en-US_BroadbandModel";
+    document.getElementById('talkingEnglish').style.backgroundColor="orange";
+
+     fetch('/api/speech-to-text/token')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(token) {
+      console.log(token," \n "+ token.accessToken)
+      var stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
+       url:"https://stream-fra.watsonplatform.net/speech-to-text/api/v1/recognize",
+       access_token: token.accessToken,
+       model:mic_input.toString(),
+       word_confidence: true,
+      outputElement: '#senderMSG', // send text to browser instead of console
+       object_mode: true
+     });
+   stream.recognizeStream.on('message', function(frame, data) {
+    $("#status").text("recording...").css('color','blue');;
+     console.log('message', frame, data)
+     getTranslation()
+   });
+      document.querySelector('#stop').onclick = function() {
+        stream.stop();
+       document.getElementById('talkingEnglish').style.backgroundColor="white";
+
+    //    $("#status").text("recording stopped").css('color','red');
+      };
+    })
+    .catch(function(error) {
+        document.getElementById('talkingarabic').style.backgroundColor="red";
+      console.log(error);
+    });
+}
+
+function SpeakArabicToText(){
+
+var mic_input= "ar-AR_BroadbandModel";
+document.getElementById('talkingarabic').style.backgroundColor="orange";
+ fetch('/api/speech-to-text/token')
+.then(function(response) {
+  return response.json();
+})
+.then(function(token) {
+  console.log(token," \n "+ token.accessToken)
+  var stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
+   url:"https://stream-fra.watsonplatform.net/speech-to-text/api/v1/recognize",
+    access_token: token.accessToken,
+   model:mic_input.toString(),
+    word_confidence: true,
+    outputElement: '#RecieveMSG', // send text to browser instead of console
+    object_mode: true
+  });
+stream.recognizeStream.on('message', function(frame, data) {
+$("#status").text("recording...").css('color','blue');;
+ console.log('message', frame, data)
+ getTranslation()
+});
+  document.querySelector('#stoparabic').onclick = function() {
+    document.getElementById('talkingarabic').style.backgroundColor="white";
+    stream.stop();
+//    $("#status").text("recording stopped").css('color','red');
+  };
+})
+.catch(function(error) {
+  console.log(error);
+});
+}
+
+   
+    //===============================================MY_TEXT_TO_SPEECH_CODE==================================================================
+   document.querySelector('#speak').onclick = function() {
+      // alert("Hi");
+      $("#speak").css("background-color", "blue");
+    //    $("#status2").text("Speaking..").css('color','blue');
+       fetch('/api/text-to-speech/token')
+    .then(function(response) {
+      return response.json();
+    }).then(function(token) {
+        //  console.log(token," \n "+ token.accessToken)
+         const audio = WatsonSpeech.TextToSpeech.synthesize({
+             url:" https://stream-fra.watsonplatform.net/text-to-speech/api",
+             access_token: token.accessToken,
+             text: document.querySelector('#home textarea').value,
+        });
+        $("#speak").css("background-color", "white");
+      audio.onerror = function(err) {
+      console.log('audio error: ', err);
+        }    
+    });
+};
+
+  /* document.getElementById("check").addEventListener("click", function(event){
+   
+       alert("hi");
+   });*/
+   </script></code></pre>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.rawgit.com/watson-developer-cloud/watson-developer-cloud.github.io/master/analytics.js"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+/*
+    $("#mic").css("color", "blue");
+    $("#status").text("please wait...").css('color','blue');;
+
+       event.preventDefault()
+       var token ='eyJraWQiOiIyMDE5MDcyNCIsImFsZyI6IlJTMjU2In0.eyJpYW1faWQiOiJpYW0tU2VydmljZUlkLTRkYmY0MDk1LWY3YTMtNGE3OC1hNWE4LTEzZDQxNmViMDcyNyIsImlkIjoiaWFtLVNlcnZpY2VJZC00ZGJmNDA5NS1mN2EzLTRhNzgtYTVhOC0xM2Q0MTZlYjA3MjciLCJyZWFsbWlkIjoiaWFtIiwiaWRlbnRpZmllciI6IlNlcnZpY2VJZC00ZGJmNDA5NS1mN2EzLTRhNzgtYTVhOC0xM2Q0MTZlYjA3MjciLCJzdWIiOiJTZXJ2aWNlSWQtNGRiZjQwOTUtZjdhMy00YTc4LWE1YTgtMTNkNDE2ZWIwNzI3Iiwic3ViX3R5cGUiOiJTZXJ2aWNlSWQiLCJ1bmlxdWVfaW5zdGFuY2VfY3JucyI6WyJjcm46djE6Ymx1ZW1peDpwdWJsaWM6c3BlZWNoLXRvLXRleHQ6ZXUtZGU6YS82NjZkNzdkMTIyZGM0ZDc3YTFmMGQwZjg0YjUzY2UzMDplMzFjOTMyMi0xZmFhLTRjNDYtYmZmOS01YzFiMzY5MGNmMmU6OiJdLCJhY2NvdW50Ijp7InZhbGlkIjp0cnVlLCJic3MiOiI2NjZkNzdkMTIyZGM0ZDc3YTFmMGQwZjg0YjUzY2UzMCJ9LCJpYXQiOjE1NzE2MDkzNjIsImV4cCI6MTU3MTYxMjk2MiwiaXNzIjoiaHR0cHM6Ly9pYW0uY2xvdWQuaWJtLmNvbS9pZGVudGl0eSIsImdyYW50X3R5cGUiOiJ1cm46aWJtOnBhcmFtczpvYXV0aDpncmFudC10eXBlOmFwaWtleSIsInNjb3BlIjoiaWJtIG9wZW5pZCIsImNsaWVudF9pZCI6ImRlZmF1bHQiLCJhY3IiOjEsImFtciI6WyJwd2QiXX0.bH3v0w3W7z_G8gzbD1GF3vVfeKc8b-iwGgZohClQdBNA_BjPI0CHFdRnZw9-5kqdgZzKG9eNLOrDBbYqmitUoXSupV0GL_Sw7RokB3OG0116CCf6Kq9LX9tAEfcFh5LiVUQUH22cyLGsXtsPBJwwcpfz1HqenAQZrKc9dctnTtezpaeHw_wNR7u8vvnKbzY782w3_xE5yzS1FVSSSIr2GsWJUyyUKHstUQCw3G5kEcoU0s7luTGm-tgGA-LZJetojN-AiIXvy8dExZZV78adGcOOyzdXTWupTaPX3yuUiohS4ssz5ZwfLEQMmPihF6RTnNYXu2ILFUygyR0kCfUWYA';
+       var stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
+       url:"https://stream-fra.watsonplatform.net/speech-to-text/api/v1/recognize",
+       access_token: token,
+       model:mic_input.toString(),
+       word_confidence: true,
+       outputElement: '#home textarea', // send text to browser instead of console
+       object_mode: true
+     });
+   stream.recognizeStream.on('message', function(frame, data) {
+    $("#status").text("recording...").css('color','blue');;
+     console.log('message', frame, data)
+     getTranslation()
+   });
+     stream.on('data', function(data) { // send text to console instead of browser
+       console.log(data);
+     });
+   
+     stream.on('error', function(err) {
+       console.log(err);
+     });
+   
+     document.querySelector('#stop').onclick = function() {
+      //   alert("stop");
+       stream.stop();
+       $("#status").text("recording stopped").css('color','red');
+
+     };
+     
+     });
+   */

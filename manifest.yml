@@ -1,0 +1,6 @@
+---
+applications:
+- name: trans-speak
+  command: npm start
+  path: .
+  memory: 256M
