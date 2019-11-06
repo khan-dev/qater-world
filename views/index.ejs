@@ -152,13 +152,24 @@
       <div class="row">
         <!-- .col-lg-12 -->
         <div class="col-lg-6 col-md-6 col-sm-6">
-          <h3>English</h3>
+         
           <p class="help-block">Speak through microphone</p>
+          <select id="lang_input" class=" btn btn-block" >
+                <option value="">Choose Language</option>
+                <option value="english">English</option>
+               <option value="french">French</option>
+               <option value="spanish">Spanish</option>
+               <option value="italian">Italian</option>
+                <option value="arabic">Arabic</option>
 
+                </select>
           <!-- <button class="btn-default btn "  aria-expanded="true" style="padding:15px;" >
     <select id="lang_input" class=" btn-default" style="border-color: transparent transparent #fff transparent;">
         <option value="">Choose Language</option>
         <option value="english">English</option>
+       <option value="french">French</option>
+       <option value="spanish">Spanish</option>
+       <option value="italian">Italian</option>
         <option value="arabic">Arabic</option>
         </select>
  </button> -->
@@ -227,7 +238,7 @@ Example of Rest API</textarea>
               onclick="SpeakEnglishToText()"
               id="talkingEnglish"
             >
-              Speak English
+              Speak 
             </button>
             <button
               class="btn-primary"
@@ -236,7 +247,7 @@ Example of Rest API</textarea>
             >
               Stop Speaking
             </button>
-            <button  class="btn-primary" id="speak" style="width:30%;margin-top: 5px;">Read English</button>
+            <button  class="btn-primary" id="speak" style="width:30%;margin-top: 5px;">Read </button>
             <!-- <ul class="nav nav-tabs" role="tablist"> -->
             <!--  <button id="mic" type="button">Add Button here</button>  -->
             <!-- <i style='font-size:40px' class='fas' id="mic">&#xf130;</i> -->
@@ -255,11 +266,18 @@ Example of Rest API</textarea>
         <!-- Second column of inputs -->
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
-            <h3>Arabic</h3>
+            
             <p class="help-block" style="color:red">
               *CLOSE THE MIC BEFORE LISTENING TO AUDIO*
             </p>
-
+                <select id="lang_input2" class=" btn btn-block" >
+                    <option value="">Choose Language</option>
+                    <option value="english">English</option>
+                   <option value="french">French</option>
+                   <option value="spanish">Spanish</option>
+                   <option value="italian">Italian</option>
+                    <option value="arabic">Arabic</option>
+                </select>
             <!-- <div class="row" >
                         <div class="col-lg-12"> -->
 
@@ -331,7 +349,7 @@ Example of Rest API</textarea>
               style="width:30%"
               onclick="SpeakArabicToText()"
             >
-              Speak Arabic
+              Speak 
             </button>
             <button
               class="btn-primary"
@@ -369,6 +387,8 @@ Example of Rest API</textarea>
     <script type="text/javascript" src="demo.js"></script>
 
     <pre><code><script>
+        let GlobalSource="";
+        let Globaldestination="";
       function runOnEnter(e){
        
           if(  e.which == 13 || e.keyCode == 13){
@@ -387,6 +407,14 @@ Example of Rest API</textarea>
         console.log('runn')
         let text=document.getElementById('senderMSG').value;
         document.getElementById('Textbox').value+="\n"+text;
+        // fetch('/translate-all/'+text+'/'+GlobalSource+'/'+Globaldestination).then(res=>{
+        //     if(res.status !==200){
+        //         console.log('error during fetch' );
+        //     }
+        //     return res.json();
+        // }).then(data=>{
+        //     console.log('data',data);
+        // })
         getTranslationViaButton(text) ;
         document.getElementById('senderMSG').value="";
     }
@@ -400,7 +428,7 @@ Example of Rest API</textarea>
     function getTranslationViaButtonArabic(Value) {
     //     $('#get_translation').text("ar-en");
     // $('#mic_input').text("ar-AR_BroadbandModel");
-       var translation= "ar-en";
+       var translation= Globaldestination+'-'+GlobalSource;
        var nmtValue  = '2018-05-01';
        var pageDomain = '';
        var source = '';
@@ -409,7 +437,7 @@ Example of Rest API</textarea>
        if ((Value)) {
          textContent = Value;
        }
-   
+   console.log(translation);
        // get model_id from source to target
       // var model_id = 'ar-en';
        if (textContent && translation) {
@@ -451,7 +479,7 @@ Example of Rest API</textarea>
      }
 
     function getTranslationViaButton(Value) {
-       var translation= "en-ar";
+       var translation= GlobalSource+'-'+Globaldestination;
        var nmtValue  = '2018-05-01';
        var pageDomain = '';
        var source = '';
@@ -460,7 +488,7 @@ Example of Rest API</textarea>
        if ((Value)) {
          textContent = Value;
        }
-   
+   console.log(translation);
        // get model_id from source to target
       // var model_id = 'ar-en';
        if (textContent && translation) {
@@ -564,14 +592,53 @@ Example of Rest API</textarea>
     // alert("work");
     //  document.getElementById('home').style.display = "block";
     $('#get_translation').text("ar-en");
-    $('#mic_input').text("ar-AR_BroadbandModel");
-     
+    $('#mic_input2').text("ar-AR_BroadbandModel");
+    GlobalSource="ar";
+    }
+    else if(val=="french"){
+        GlobalSource="fr";
+    }
+    else if(val=="spanish"){
+        GlobalSource="es";
+    }
+    else if(val=="italian"){
+        GlobalSource="it";
     }
     else{
+        GlobalSource="en";
     $('#get_translation').text("en-ar");
-    $('#mic_input').text("en-US_BroadbandModel");
+    $('#mic_input2').text("en-US_BroadbandModel");
+    }
+}
+)
+
+
+$('#lang_input2').change(function () {
+    var val2 = this.value; //grab the value selected
+    if(val2=="arabic"){
+    // alert("work");
+    //  document.getElementById('home').style.display = "block";
+    $('#get_translation2').text("ar-en");
+    $('#mic_input2').text("ar-AR_BroadbandModel");
+     Globaldestination="ar";
+    }
+    else if(val2=="french"){
+        Globaldestination="fr";
+    }
+    else if(val2=="spanish"){
+        Globaldestination="es";
+    }
+    else if(val2=="italian"){
+        Globaldestination="it";
+    }
+    else{
+        Globaldestination="en";
+    $('#get_translation2').text("en-ar");
+    $('#mic_input2').text("en-US_BroadbandModel");
     }
 })
+// lang_input2
+
      //=========================SPEAK_TO_TEXT=======================================
      
 //      document.getElementById("mic").addEventListener("click", function(event){

@@ -37,6 +37,8 @@ var translator = new LanguageTranslatorV3({
   // After that, the SDK will fall back to the ibm-cloud-provided VCAP_SERVICES environment property
   // username: '<username>',
   // password: '<password>'
+  // iam_apikey:'E9J1Js1mxgjgsTA73Lh03H_ujd9qV3nj1QWBp3eKdLgr',
+  // url:'https://gateway-wdc.watsonplatform.net/language-translator/api',
   version: '2018-05-01',
   headers: {
     'X-Watson-Technology-Preview': '2018-05-01',
@@ -58,6 +60,22 @@ app.get('/api/models', function(req, res, next) {
   translator.listModels()
     .then(models => res.json(models))
     .catch(error => next(error));
+});
+app.get('/translate-all/:text/:source/:dest',(req,res)=>{
+  translator.translate({
+    text:req.params.text,
+    source:req.params.source,
+    target:req.params.dest,
+    // modelId:eq.params.source+'-'+req.params.dest,
+  }).then(data=>{
+    console.log(JSON.stringify(data,null,2));
+    res.send({translation:data})
+  }).catch(err=>{
+    console.log('error',err);
+  })
+  // console.log('am i runnung?')
+  // console.log(req.params.text,req.params.source,req.params.dest);
+  // res.send({hello:"hello"});
 });
 
 app.post('/api/identify', function(req, res, next) {
@@ -83,7 +101,6 @@ app.post('/api/translate', function(req, res, next) {
 
 
 //======================================================speech_to_text==============================================================
-
 
 
 let tokenManager_speech_text;
